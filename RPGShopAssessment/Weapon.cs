@@ -11,13 +11,19 @@ namespace RPGShopAssessment
         private int _damage = 0;
         
 
-        public void weaponConst(string newName, int newDamage, int newValue)
+        public Weapon(string newName, int newDamage, int newValue, string description)
         {
             _name = newName;
             _damage = newDamage;
             _value = newValue;
+            _description = description;
         }
 
-        private weaponConst Dagger = new attackItem("Iron Dagger", 10, 5);
+        public int GetDamage()
+        {
+            return _damage;
+        }
+
+      
     }
 }

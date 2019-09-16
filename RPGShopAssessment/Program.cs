@@ -24,7 +24,8 @@ namespace RPGShopAssessment
 
             else if (_Choice == "Y")
             {
-                Console.WriteLine("Test");
+                //Console.WriteLine("Test");
+                
             }
 
             Console.ReadLine();

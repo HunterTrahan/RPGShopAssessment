@@ -11,5 +11,21 @@ namespace RPGShopAssessment
         protected int _value = 0;
         protected string _description = "";
         protected string _name = "";
+
+        public string GetName()
+        {
+            return _name;
+        }
+
+        public int GetValue()
+        {
+            return _value;
+        }
+
+        public string GetDescription()
+        {
+            return _description;
+        }
+
     }
 }
