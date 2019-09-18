@@ -29,6 +29,22 @@ namespace RPGShopAssessment
                 Console.WriteLine("0: Leave");
                 Console.WriteLine("1: Buy");
                 Console.WriteLine("2: Sell");
+                Console.ReadLine();
+
+                //gets players input
+                choice = Console.ReadLine();
+                Console.WriteLine();
+
+                if (choice == "1")
+                {
+                    Console.WriteLine("Test");
+                }
+
+                else if (choice == "2")
+                {
+                    Console.WriteLine("Test");
+                }
+                Console.ReadKey();
             }
        }
     }

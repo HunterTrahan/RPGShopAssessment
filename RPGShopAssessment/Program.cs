@@ -10,12 +10,16 @@ namespace RPGShopAssessment
     {
         static void Main(string[] args)
         {
+            //storeInventory class instance
+            storeInventory Menu = new storeInventory();
 
             string _Choice = "";
 
+            //Ask the player if they wish to enter the shop
             Console.WriteLine("You stand before the shop, will you enter? (Y/N)");
             _Choice = Console.ReadLine();
 
+            //Check for players choice
             _Choice = _Choice.ToUpper();
             if (_Choice == "N")
             {
@@ -25,7 +29,7 @@ namespace RPGShopAssessment
             else if (_Choice == "Y")
             {
                 //Console.WriteLine("Test");
-                
+                Menu.ShopMenu();
             }
 
             Console.ReadLine();
