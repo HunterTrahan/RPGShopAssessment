@@ -8,7 +8,7 @@ namespace RPGShopAssessment
 {
     class Weapon : Item
     {
-        private int _damage = 0;
+        private int _damage;
         
 
         public Weapon(string newName, int newDamage, int newValue, string description)
