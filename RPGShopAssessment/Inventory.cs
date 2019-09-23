@@ -9,9 +9,7 @@ namespace RPGShopAssessment
     class Inventory
     {
         protected Item[] _items;
-        protected int _Gold;
-        
-
+        public int _Gold;
 
         //Add Item to Store or Player
         public void Add(Item item)
@@ -67,5 +65,6 @@ namespace RPGShopAssessment
 
             }
         }
+
     }
 }

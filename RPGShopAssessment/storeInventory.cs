@@ -11,8 +11,6 @@ namespace RPGShopAssessment
         Item item = new Item();
         playerInventory _Player;
 
-        int _gold = 300;
-
         //Weapon List
         private Item dagger = new Weapon("Iron Dagger", 5, 10, "One of the more nortious of weapons often favored by rouges and thieves for being easily conceable.");
         private Item bow = new Weapon("Cheap Bow", 10, 10, "The weapon of choice for archers in training, cheap and affordable.");
@@ -28,12 +26,32 @@ namespace RPGShopAssessment
         {
             Item[] itemBag = { dagger, bow, sword, mace, health, mana, revive };
             _items = itemBag;
+
+            _Gold = 300;
         }
 
         //Store Inventory speaks to the players inventory
         public void EnterStore(playerInventory Player)
         {
             _Player = Player;
+        }
+
+        public void Buy(int index)
+        {
+            if (_Player.Gold >= _items[index].GetValue())
+            {
+                Item purchase = Remove(index);
+                _Player.Add(purchase);
+            }
+        }
+
+        public void Sell(int index)
+        {
+            if (_Player.Gold >= _items[index].GetValue())
+            {
+                Item purchase = Remove(index);
+                _Player.Add(purchase);
+            }
         }
 
         public void ShopMenu()
@@ -47,7 +65,8 @@ namespace RPGShopAssessment
             Console.WriteLine("0: Leave");
             Console.WriteLine("1: Buy");
             Console.WriteLine("2: Sell");
-
+            Console.WriteLine("3: Inventory");
+            
             while (choice != "0")
             {
                 //gets players input
@@ -91,7 +110,7 @@ namespace RPGShopAssessment
                         //Move item from shops array into players array
                         if (choice3 == "1")
                         {
-
+                            Buy(0);
                         }
 
                         //display descriptions of the item
@@ -125,7 +144,7 @@ namespace RPGShopAssessment
                         //Move item from shops array into players array
                         if (choice3 == "1")
                         {
-
+                            Buy(1);
                         }
 
                         //display descriptions of the item
@@ -159,7 +178,7 @@ namespace RPGShopAssessment
                         //Move item from shops array into players array
                         if (choice3 == "1")
                         {
-
+                            Buy(2);
                         }
 
                         //display descriptions of the item
@@ -193,7 +212,7 @@ namespace RPGShopAssessment
                         //Move item from shops array into players array
                         if (choice3 == "1")
                         {
-
+                            Buy(3);
                         }
 
                         //display descriptions of the item
@@ -227,7 +246,7 @@ namespace RPGShopAssessment
                         //Move item from shops array into players array
                         if (choice3 == "1")
                         {
-
+                            Buy(4);
                         }
 
                         //display descriptions of the item
@@ -261,7 +280,7 @@ namespace RPGShopAssessment
                         //Move item from shops array into players array
                         if (choice3 == "1")
                         {
-
+                            Buy(5);
                         }
 
                         //display descriptions of the item
@@ -295,7 +314,7 @@ namespace RPGShopAssessment
                         //Move item from shops array into players array
                         if (choice3 == "1")
                         {
-
+                            Buy(6);
                         }
 
                         //display descriptions of the item
@@ -317,6 +336,12 @@ namespace RPGShopAssessment
                 else if (choice == "2")
                 {
                     Console.WriteLine("\nWhat are you selling?");
+                }
+
+                //Display the players inventory
+                else if (choice == "3")
+                {
+
                 }
 
                 //Display error if other than required selection

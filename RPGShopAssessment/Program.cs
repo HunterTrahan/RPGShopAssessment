@@ -10,6 +10,7 @@ namespace RPGShopAssessment
     {
         static void Main(string[] args)
         {
+
             //storeInventory class instance
             storeInventory Menu = new storeInventory();
             playerInventory Player = new playerInventory();
