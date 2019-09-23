@@ -8,6 +8,8 @@ namespace RPGShopAssessment
 {
     class playerInventory
     {
+        public int Health = 100;
         int _Gold = 0;
+
     }
 }

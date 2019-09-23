@@ -26,9 +26,9 @@ namespace RPGShopAssessment
                 Console.WriteLine("You decided to go home.");
             }
 
+            //Display shop menu
             else if (_Choice == "Y")
             {
-                //Console.WriteLine("Test");
                 Menu.ShopMenu();
             }
 
