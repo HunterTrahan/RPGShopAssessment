@@ -8,8 +8,6 @@ namespace RPGShopAssessment
 {
     class playerInventory : Inventory
     {
-        int _Gold = 150;
-
-
+        int _gold = 250;
     }
 }

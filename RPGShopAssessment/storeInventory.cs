@@ -11,7 +11,7 @@ namespace RPGShopAssessment
         Item item = new Item();
         playerInventory _Player;
 
-        int _gold = 200;
+        int _gold = 300;
 
         //Weapon List
         private Item dagger = new Weapon("Iron Dagger", 5, 10, "One of the more nortious of weapons often favored by rouges and thieves for being easily conceable.");
