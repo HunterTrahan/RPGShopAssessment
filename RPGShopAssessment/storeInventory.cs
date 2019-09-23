@@ -44,6 +44,7 @@ namespace RPGShopAssessment
                 choice = Console.ReadLine();
                 Console.WriteLine();
 
+                //Display list of items to purchase
                 if (choice == "1")
                 {
                     Console.WriteLine("\nWhat are you buying?");
@@ -51,23 +52,120 @@ namespace RPGShopAssessment
                     Console.WriteLine("1: Iron Dagger");
                     Console.WriteLine("2: Cheap Bow");
                     Console.WriteLine("3: Iron Sword");
-                    Console.WriteLine("4: Steel Sword");
+                    Console.WriteLine("4: Steel Mace");
 
                     choice2 = Console.ReadLine();
 
+                    //Display info for dagger
                     if (choice2 == "1")
                     {
                         Console.WriteLine("");
                         Console.Write(_weapons[0].GetName());
                         Console.WriteLine("\nPrice: " + _weapons[0].GetValue() + " gold");
-                        Console.WriteLine(_weapons[0].GetDescription());
                         Console.WriteLine();
 
-                        Console.WriteLine("Purchase?");
+                        Console.WriteLine("0: Back");
+                        Console.WriteLine("1: Buy");
+                        Console.WriteLine("2: Inspect");
 
-                        Console.ReadLine();
+                        choice3 = Console.ReadLine();
 
+                        //Move item from shops array into players array
+                        if (choice3 == "1")
+                        {
 
+                        }
+
+                        //display descriptions of the item
+                        else if (choice3 == "2")
+                        {
+                            Console.WriteLine(_weapons[0].GetDescription());
+                            Console.ReadLine();
+                        }
+                    }
+
+                    //Display info for bow
+                    else if (choice2 == "2")
+                    {
+                        Console.WriteLine("");
+                        Console.Write(_weapons[1].GetName());
+                        Console.WriteLine("\nPrice: " + _weapons[1].GetValue() + " gold");
+                        Console.WriteLine();
+
+                        Console.WriteLine("0: Back");
+                        Console.WriteLine("1: Buy");
+                        Console.WriteLine("2: Inspect");
+
+                        choice3 = Console.ReadLine();
+
+                        //Move item from shops array into players array
+                        if (choice3 == "1")
+                        {
+
+                        }
+
+                        //display descriptions of the item
+                        else if (choice3 == "2")
+                        {
+                            Console.WriteLine(_weapons[1].GetDescription());
+                            Console.ReadLine();
+                        }
+                    }
+
+                    //Display info for sword
+                    else if (choice2 == "3")
+                    {
+                        Console.WriteLine("");
+                        Console.Write(_weapons[2].GetName());
+                        Console.WriteLine("\nPrice: " + _weapons[2].GetValue() + " gold");
+                        Console.WriteLine();
+
+                        Console.WriteLine("0: Back");
+                        Console.WriteLine("1: Buy");
+                        Console.WriteLine("2: Inspect");
+
+                        choice3 = Console.ReadLine();
+
+                        //Move item from shops array into players array
+                        if (choice3 == "1")
+                        {
+
+                        }
+
+                        //display descriptions of the item
+                        else if (choice3 == "2")
+                        {
+                            Console.WriteLine(_weapons[2].GetDescription());
+                            Console.ReadLine();
+                        }
+                    }
+
+                    //Display info for mace
+                    else if (choice2 == "4")
+                    {
+                        Console.WriteLine("");
+                        Console.Write(_weapons[3].GetName());
+                        Console.WriteLine("\nPrice: " + _weapons[3].GetValue() + " gold");
+                        Console.WriteLine();
+
+                        Console.WriteLine("0: Back");
+                        Console.WriteLine("1: Buy");
+                        Console.WriteLine("2: Inspect");
+
+                        choice3 = Console.ReadLine();
+
+                        //Move item from shops array into players array
+                        if (choice3 == "1")
+                        {
+
+                        }
+
+                        //display descriptions of the item
+                        else if (choice3 == "2")
+                        {
+                            Console.WriteLine(_weapons[3].GetDescription());
+                            Console.ReadLine();
+                        }
                     }
                 }
 
