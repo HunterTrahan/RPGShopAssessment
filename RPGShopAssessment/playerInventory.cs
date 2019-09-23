@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace RPGShopAssessment
 {
-    class playerInventory
+    class playerInventory : Inventory
     {
-        public int Health = 100;
-        int _Gold = 0;
+        int _Gold = 150;
+
 
     }
 }

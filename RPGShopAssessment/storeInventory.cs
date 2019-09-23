@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace RPGShopAssessment
 {
-    class storeInventory
+    class storeInventory : Inventory
     {
         Item item = new Item();
+        playerInventory _Player;
 
-        int _gold = 0;
-        private Item[] _items;
+        int _gold = 200;
 
         //Weapon List
         private Item dagger = new Weapon("Iron Dagger", 5, 10, "One of the more nortious of weapons often favored by rouges and thieves for being easily conceable.");
@@ -30,8 +30,14 @@ namespace RPGShopAssessment
             _items = itemBag;
         }
 
+        //Store Inventory speaks to the players inventory
+        public void EnterStore(playerInventory Player)
+        {
+            _Player = Player;
+        }
+
         public void ShopMenu()
-       {
+        {
             string choice = "";
             string choice2 = "";
             string choice3 = "";
@@ -203,8 +209,6 @@ namespace RPGShopAssessment
                             Console.WriteLine("Error");
                         }
                     }
-
-                    //------------------------------------
 
                     //Display info for health potion
                     else if (choice2 == "5")

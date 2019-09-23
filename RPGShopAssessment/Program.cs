@@ -12,6 +12,7 @@ namespace RPGShopAssessment
         {
             //storeInventory class instance
             storeInventory Menu = new storeInventory();
+            playerInventory Player = new playerInventory();
 
             string _Choice = "";
 
@@ -29,6 +30,7 @@ namespace RPGShopAssessment
             //Display shop menu
             else if (_Choice == "Y")
             {
+                Menu.EnterStore(Player);
                 Menu.ShopMenu();
             }
 
