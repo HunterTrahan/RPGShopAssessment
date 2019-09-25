@@ -8,16 +8,10 @@ namespace RPGShopAssessment
 {
     class playerInventory : Inventory
     {
-        public void playerGold()
+        public playerInventory()
         {
             _Gold = 250;
         }
 
-        public void playerMenu()
-        {
-            Console.WriteLine("\nYou look inside your bag");
-            Console.WriteLine("0: Back");
-            
-        }
     }
 }

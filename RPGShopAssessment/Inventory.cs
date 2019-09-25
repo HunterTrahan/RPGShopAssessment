@@ -8,8 +8,10 @@ namespace RPGShopAssessment
 {
     class Inventory
     {
-        protected Item[] _items;
+        protected Item[] _items = new Item[0];
         public int _Gold;
+
+
 
         //Add Item to Store or Player
         public void Add(Item item)
@@ -45,6 +47,14 @@ namespace RPGShopAssessment
             _items = _newItem;
 
             return itemSave;
+        }
+
+        public void PrintItems()
+        {
+            for (int i = 0; i < _items.Length; i++)
+            {
+                Console.WriteLine(_items[i].GetName());
+            }
         }
 
         public int Gold

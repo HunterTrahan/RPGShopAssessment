@@ -11,6 +11,7 @@ namespace RPGShopAssessment
         Item item = new Item();
         playerInventory _Player;
 
+
         //Weapon List
         private Item dagger = new Weapon("Iron Dagger", 5, 10, "One of the more nortious of weapons often favored by rouges and thieves for being easily conceable.");
         private Item bow = new Weapon("Cheap Bow", 10, 10, "The weapon of choice for archers in training, cheap and affordable.");
@@ -341,7 +342,7 @@ namespace RPGShopAssessment
                 //Display the players inventory
                 else if (choice == "3")
                 {
-
+                    _Player.PrintItems();
                 }
 
                 //Display error if other than required selection
