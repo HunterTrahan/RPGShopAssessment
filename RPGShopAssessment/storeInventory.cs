@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace RPGShopAssessment
 {
@@ -352,8 +353,6 @@ namespace RPGShopAssessment
                         Console.WriteLine(Items[Items.Length - 1].GetName() + " Sold.");
                     }
 
-                    
-
                     Console.ReadLine();
                 }
 
@@ -371,5 +370,22 @@ namespace RPGShopAssessment
                 }
             }
         }
+
+        //Save and Load system
+        public void Save(string path)
+        {
+            //Create a writer for the file at our path
+            StreamWriter writer = File.CreateText(path);
+            //path is syntax for a file on the computer, example is sve.txt
+            //Write to it the same way we write to thyhe console
+            writer.WriteLine();
+            (Items).Save(writer);
+            //            ^ not a string
+            (_Player.Items).Save(writer);
+            //                     ^ also not a strng
+            //Close it
+            writer.Close();
+        }
+
     }
 }
