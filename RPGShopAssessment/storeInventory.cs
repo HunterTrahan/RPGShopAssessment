@@ -10,6 +10,7 @@ namespace RPGShopAssessment
     {
         Item item = new Item();
         playerInventory _Player;
+        int call = 0;
 
 
         //Weapon List
@@ -48,18 +49,16 @@ namespace RPGShopAssessment
 
         public void Sell(int index)
         {
-            if (_Player.Gold >= _items[index].GetValue())
+            if (Gold >= _Player.Items[index].GetValue())
             {
-                Item purchase = Remove(index);
-                _Player.Add(purchase);
+                Item purchase = _Player.Remove(index);
+                Add(purchase);
             }
         }
 
         public void ShopMenu()
         {
             string choice = "";
-            string choice2 = "";
-            string choice3 = "";
 
             while (choice != "0")
             {
@@ -82,20 +81,15 @@ namespace RPGShopAssessment
                 //Display list of items to purchase
                 else if (choice == "1")
                 {
-                    for(int i = 0; i < _items.Length; i++)
+                    Console.WriteLine("\nWhat are you buying?");
+                    Console.WriteLine("0: Back");
+
+                    for (int i = 0; i < _items.Length; i++)
                     {
-                        Console.WriteLine("\nWhat are you buying?");
-                        Console.WriteLine("0: Back");
-                        Console.WriteLine(i + _items[0].GetName());
-                        Console.WriteLine(i + _items[1].GetName());
-                        Console.WriteLine(i + _items[2].GetName());
-                        Console.WriteLine(i + _items[3].GetName());
-                        Console.WriteLine(i + _items[4].GetName());
-                        Console.WriteLine(i + _items[5].GetName());
-                        Console.WriteLine(i + _items[6].GetName());
+                        Console.WriteLine(i +1 + ": " + _items[i].GetName());
                     }
                     
-                    choice2 = Console.ReadLine();
+                    choice = Console.ReadLine();
 
                     if (choice == "0")
                     {
@@ -103,7 +97,7 @@ namespace RPGShopAssessment
                     }
 
                     //Display info for dagger
-                    else if (choice2 == "1")
+                    else if (choice == "1")
                     {
                         Console.WriteLine("");
                         Console.Write(_items[0].GetName());
@@ -114,16 +108,16 @@ namespace RPGShopAssessment
                         Console.WriteLine("1: Buy");
                         Console.WriteLine("2: Inspect");
 
-                        choice3 = Console.ReadLine();
+                        choice = Console.ReadLine();
 
                         //Move item from shops array into players array
-                        if (choice3 == "1")
+                        if (choice == "1")
                         {
                             Buy(0);
                         }
 
                         //display descriptions of the item
-                        else if (choice3 == "2")
+                        else if (choice == "2")
                         {
                             Console.WriteLine(_items[0].GetDescription());
                             Console.ReadLine();
@@ -137,7 +131,7 @@ namespace RPGShopAssessment
                     }
 
                     //Display info for bow
-                    else if (choice2 == "2")
+                    else if (choice == "2")
                     {
                         Console.WriteLine("");
                         Console.Write(_items[1].GetName());
@@ -148,16 +142,16 @@ namespace RPGShopAssessment
                         Console.WriteLine("1: Buy");
                         Console.WriteLine("2: Inspect");
 
-                        choice3 = Console.ReadLine();
+                        choice = Console.ReadLine();
 
                         //Move item from shops array into players array
-                        if (choice3 == "1")
+                        if (choice == "1")
                         {
                             Buy(1);
                         }
 
                         //display descriptions of the item
-                        else if (choice3 == "2")
+                        else if (choice == "2")
                         {
                             Console.WriteLine(_items[1].GetDescription());
                             Console.ReadLine();
@@ -171,7 +165,7 @@ namespace RPGShopAssessment
                     }
 
                     //Display info for sword
-                    else if (choice2 == "3")
+                    else if (choice == "3")
                     {
                         Console.WriteLine("");
                         Console.Write(_items[2].GetName());
@@ -182,16 +176,16 @@ namespace RPGShopAssessment
                         Console.WriteLine("1: Buy");
                         Console.WriteLine("2: Inspect");
 
-                        choice3 = Console.ReadLine();
+                        choice = Console.ReadLine();
 
                         //Move item from shops array into players array
-                        if (choice3 == "1")
+                        if (choice == "1")
                         {
                             Buy(2);
                         }
 
                         //display descriptions of the item
-                        else if (choice3 == "2")
+                        else if (choice == "2")
                         {
                             Console.WriteLine(_items[2].GetDescription());
                         }
@@ -204,7 +198,7 @@ namespace RPGShopAssessment
                     }
 
                     //Display info for mace
-                    else if (choice2 == "4")
+                    else if (choice == "4")
                     {
                         Console.WriteLine("");
                         Console.Write(_items[3].GetName());
@@ -215,17 +209,17 @@ namespace RPGShopAssessment
                         Console.WriteLine("1: Buy");
                         Console.WriteLine("2: Inspect");
 
-                        choice3 = Console.ReadLine();
+                        choice = Console.ReadLine();
 
                         //Move item from shops array into players array
-                        if (choice3 == "1")
+                        if (choice == "1")
                         {
                             Buy(3);
                             Console.ReadLine();
                         }
 
                         //display descriptions of the item
-                        else if (choice3 == "2")
+                        else if (choice == "2")
                         {
                             Console.WriteLine(_items[3].GetDescription());
                             Console.ReadLine();
@@ -239,7 +233,7 @@ namespace RPGShopAssessment
                     }
 
                     //Display info for health potion
-                    else if (choice2 == "5")
+                    else if (choice == "5")
                     {
                         Console.WriteLine("");
                         Console.Write(_items[4].GetName());
@@ -250,17 +244,17 @@ namespace RPGShopAssessment
                         Console.WriteLine("1: Buy");
                         Console.WriteLine("2: Inspect");
 
-                        choice3 = Console.ReadLine();
+                        choice = Console.ReadLine();
 
                         //Move item from shops array into players array
-                        if (choice3 == "1")
+                        if (choice == "1")
                         {
                             Buy(4);
                             Console.ReadLine();
                         }
 
                         //display descriptions of the item
-                        else if (choice3 == "2")
+                        else if (choice == "2")
                         {
                             Console.WriteLine(_items[4].GetDescription());
                             Console.ReadLine();
@@ -274,7 +268,7 @@ namespace RPGShopAssessment
                     }
 
                     //Display info for mana potion
-                    else if (choice2 == "6")
+                    else if (choice == "6")
                     {
                         Console.WriteLine("");
                         Console.Write(_items[5].GetName());
@@ -285,17 +279,17 @@ namespace RPGShopAssessment
                         Console.WriteLine("1: Buy");
                         Console.WriteLine("2: Inspect");
 
-                        choice3 = Console.ReadLine();
+                        choice = Console.ReadLine();
 
                         //Move item from shops array into players array
-                        if (choice3 == "1")
+                        if (choice == "1")
                         {
                             Buy(5);
                             Console.ReadLine();
                         }
 
                         //display descriptions of the item
-                        else if (choice3 == "2")
+                        else if (choice == "2")
                         {
                             Console.WriteLine(_items[5].GetDescription());
                             Console.ReadLine();
@@ -309,7 +303,7 @@ namespace RPGShopAssessment
                     }
 
                     //Display info for revive potion
-                    else if (choice2 == "7")
+                    else if (choice == "7")
                     {
                         Console.WriteLine("");
                         Console.Write(_items[6].GetName());
@@ -320,17 +314,17 @@ namespace RPGShopAssessment
                         Console.WriteLine("1: Buy");
                         Console.WriteLine("2: Inspect");
 
-                        choice3 = Console.ReadLine();
+                        choice = Console.ReadLine();
 
                         //Move item from shops array into players array
-                        if (choice3 == "1")
+                        if (choice == "1")
                         {
                             Buy(6);
                             Console.ReadLine();
                         }
 
                         //display descriptions of the item
-                        else if (choice3 == "2")
+                        else if (choice == "2")
                         {
                             Console.WriteLine(_items[6].GetDescription());
                             Console.ReadLine();
@@ -348,6 +342,19 @@ namespace RPGShopAssessment
                 else if (choice == "2")
                 {
                     Console.WriteLine("\nWhat are you selling?");
+                    _Player.PrintItems();
+
+                    call = Convert.ToInt32(Console.ReadLine());
+
+                    if(_items.Length >= call)
+                    {
+                        Sell(call - 1);
+                        Console.WriteLine(Items[Items.Length - 1].GetName() + " Sold.");
+                    }
+
+                    
+
+                    Console.ReadLine();
                 }
 
                 //Display the players inventory

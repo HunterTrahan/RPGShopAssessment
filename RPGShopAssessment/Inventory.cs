@@ -53,7 +53,7 @@ namespace RPGShopAssessment
         {
             for (int i = 0; i < _items.Length; i++)
             {
-                Console.WriteLine(_items[i].GetName());
+                Console.WriteLine(i +1 + ": " +_items[i].GetName());
             }
         }
 
@@ -73,6 +73,14 @@ namespace RPGShopAssessment
                     _Gold = 0;
                 }
 
+            }
+        }
+
+        public Item[] Items
+        {
+            get
+            {
+                return _items;
             }
         }
 
