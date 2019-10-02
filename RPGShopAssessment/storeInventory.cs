@@ -373,6 +373,7 @@ namespace RPGShopAssessment
                 else if (choice == "4")
                 {
                     Save("save.txt");
+                    _Player.Save("PlayerSave.txt");
                     Console.WriteLine("Game Saved.");
                 }
 
@@ -390,35 +391,6 @@ namespace RPGShopAssessment
                 {
                     Console.WriteLine("Invalid");
                 }
-            }
-        }
-
-        //Save and Load system
-        public void Save(string path)
-        {
-            //Create a writer for the file at our path
-            StreamWriter writer = File.CreateText(path);
-            //Write to it the same way we write to the console
-            writer.WriteLine(_items);
-            writer.WriteLine(_Gold);
-            writer.WriteLine(_Player.Items);
-            writer.WriteLine(_Player.Gold);
-            //Close it
-            writer.Close();
-        }
-
-        public void Load(string path)
-        {
-            if(File.Exists(path))
-            {
-                StreamReader reader = File.OpenText(path);
-                reader.ReadLine();
-                reader.Close();
-            }
-
-            else
-            {
-                Console.WriteLine("Save file not found.");
             }
         }
 

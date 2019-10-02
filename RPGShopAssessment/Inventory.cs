@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace RPGShopAssessment
 {
     class Inventory
     {
         protected Item[] _items = new Item[0];
+
         public int _Gold;
-
-
 
         //Add Item to Store or Player
         public void Add(Item item)
@@ -84,7 +84,56 @@ namespace RPGShopAssessment
             }
         }
 
+        //Save and Load system
+        public void Save(string path)
+        {
+            //Create a writer for the file at our path
+            StreamWriter writer = File.CreateText(path);
+            //Write Gold
+            writer.WriteLine(Gold);
 
+            //Itterate through players items and write them
+            writer.WriteLine(Items.Length);
+            foreach (Item itm in Items)
+            {
+                if (itm is Weapon)
+                {
+                    Weapon temp = itm as Weapon;
+                    itm.GetName();
+                    writer.WriteLine("weapon");
+                    writer.WriteLine(itm.GetName());
+                    writer.WriteLine(temp.GetDamage());
+                    writer.WriteLine(itm.GetValue());
+                    writer.WriteLine(itm.GetDescription());
+                }
 
+                else
+                {
+                    Potion temp = itm as Potion;
+                    writer.WriteLine("potion");
+                    writer.WriteLine(itm.GetName());
+                    writer.WriteLine(temp.GetHeal());
+                    writer.WriteLine(itm.GetValue());
+                    writer.WriteLine(itm.GetDescription());
+                }
+            }
+            //Close it
+            writer.Close();
+        }
+
+        public void Load(string path)
+        {
+            if (File.Exists(path))
+            {
+                StreamReader reader = File.OpenText(path);
+                reader.ReadLine();
+                reader.Close();
+            }
+
+            else
+            {
+                Console.WriteLine("Save file not found.");
+            }
+        }
     }
 }
