@@ -11,6 +11,8 @@ namespace RPGShopAssessment
     {
         Item item = new Item();
         playerInventory _Player;
+        SuperUser _Super;
+       
         int call = 0;
 
 
@@ -29,6 +31,9 @@ namespace RPGShopAssessment
         {
             Item[] itemBag = { dagger, bow, sword, mace, health, mana, revive };
             _items = itemBag;
+
+            SuperUser super = new SuperUser(this);
+            _Super = super;
 
             _Gold = 300;
         }
@@ -69,6 +74,8 @@ namespace RPGShopAssessment
                 Console.WriteLine("1: Buy");
                 Console.WriteLine("2: Sell");
                 Console.WriteLine("3: Inventory");
+                Console.WriteLine("4: Save");
+                Console.WriteLine("5: Load");
 
                 //gets players input
                 choice = Console.ReadLine();
@@ -87,9 +94,9 @@ namespace RPGShopAssessment
 
                     for (int i = 0; i < _items.Length; i++)
                     {
-                        Console.WriteLine(i +1 + ": " + _items[i].GetName());
+                        Console.WriteLine(i + 1 + ": " + _items[i].GetName());
                     }
-                    
+
                     choice = Console.ReadLine();
 
                     if (choice == "0")
@@ -347,7 +354,7 @@ namespace RPGShopAssessment
 
                     call = Convert.ToInt32(Console.ReadLine());
 
-                    if(_items.Length >= call)
+                    if (_items.Length >= call)
                     {
                         Sell(call - 1);
                         Console.WriteLine(Items[Items.Length - 1].GetName() + " Sold.");
@@ -363,10 +370,25 @@ namespace RPGShopAssessment
                     Console.ReadLine();
                 }
 
-                //Display error if other than required selection
+                else if (choice == "4")
+                {
+                    Save("save.txt");
+                    Console.WriteLine("Game Saved.");
+                }
+
+                else if (choice == "5")
+                {
+                    Load("save.txt");
+                }
+
+                else if (choice == "password")
+                {
+                    _Super.AddItem();
+                }
+
                 else
                 {
-                    Console.WriteLine("Error");
+                    Console.WriteLine("Invalid");
                 }
             }
         }
@@ -376,15 +398,28 @@ namespace RPGShopAssessment
         {
             //Create a writer for the file at our path
             StreamWriter writer = File.CreateText(path);
-            //path is syntax for a file on the computer, example is sve.txt
-            //Write to it the same way we write to thyhe console
-            writer.WriteLine();
-            (Items).Save(writer);
-            //            ^ not a string
-            (_Player.Items).Save(writer);
-            //                     ^ also not a strng
+            //Write to it the same way we write to the console
+            writer.WriteLine(_items);
+            writer.WriteLine(_Gold);
+            writer.WriteLine(_Player.Items);
+            writer.WriteLine(_Player.Gold);
             //Close it
             writer.Close();
+        }
+
+        public void Load(string path)
+        {
+            if(File.Exists(path))
+            {
+                StreamReader reader = File.OpenText(path);
+                reader.ReadLine();
+                reader.Close();
+            }
+
+            else
+            {
+                Console.WriteLine("Save file not found.");
+            }
         }
 
     }
