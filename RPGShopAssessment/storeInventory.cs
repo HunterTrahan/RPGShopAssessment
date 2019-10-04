@@ -380,6 +380,7 @@ namespace RPGShopAssessment
                 else if (choice == "5")
                 {
                     Load("save.txt");
+                    _Player.Load("PlayerSave.txt");
                 }
 
                 else if (choice == "password")

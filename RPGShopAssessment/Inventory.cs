@@ -126,8 +126,51 @@ namespace RPGShopAssessment
             if (File.Exists(path))
             {
                 StreamReader reader = File.OpenText(path);
-                reader.ReadLine();
+                //load gold
+                Gold = Convert.ToInt32(reader.ReadLine());
+                int temp = Convert.ToInt32(reader.ReadLine());
+
+                //clear inventory
+                for (int i = 0; i < Items.Length; i++)
+                {
+                    Remove(i);
+                    i--;
+                }
+
+                //Add items to inventory
+                for (int i = 0; i < temp; i++)
+                {
+                    string type = "";
+                    string name = "";
+                    string desc = "";
+                    int value = 0;
+                    int dam = 0;
+                    int heal = 0;
+
+                    //check item type
+                    type = reader.ReadLine();
+                    if (type == "weapon")
+                    {
+                        name = reader.ReadLine();
+                        dam = Convert.ToInt32(reader.ReadLine());
+                        value = Convert.ToInt32(reader.ReadLine());
+                        desc = reader.ReadLine();
+
+                        Add(new Weapon(name, dam, value, desc));
+                    }
+                    
+                    else if (type == "potion")
+                    {
+                        name = reader.ReadLine();
+                        heal = Convert.ToInt32(reader.ReadLine());
+                        value = Convert.ToInt32(reader.ReadLine());
+                        desc = reader.ReadLine();
+
+                        Add(new Potion(name, heal, value, desc));
+                    }
+                }
                 reader.Close();
+                Console.WriteLine("Game Loaded");
             }
 
             else
