@@ -55,7 +55,7 @@ namespace RPGShopAssessment
 
             _choice = Console.ReadLine();
 
-            //add new item
+            //add new weapon item
             if (_choice == "1")
             {
                 Console.WriteLine("Enter a damage value");
@@ -66,6 +66,7 @@ namespace RPGShopAssessment
                 Console.WriteLine(newItem.GetName() + " has been added to the shop inventory");
             }
 
+            //add new potion item
             else if (_choice == "2")
             {
                 Console.WriteLine("Enter a heal value");

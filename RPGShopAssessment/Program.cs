@@ -23,27 +23,26 @@ namespace RPGShopAssessment
 
             //Check for players choice
             _Choice = _Choice.ToUpper();
-            while (_Choice != "N")
+            while (_Choice != "Y" && _Choice != "N")
             {
+                Console.WriteLine("Invalid");
+                _Choice = Console.ReadLine();
+
                 _Choice = _Choice.ToUpper();
-                //Display shop menu
-                if (_Choice == "Y")
-                {
-                    Menu.EnterStore(Player);
-                    Menu.ShopMenu();
-                }
+            }
 
-                else if (_Choice == "N")
-                {
-                    Console.WriteLine("You decided to go home.");
-                    Console.ReadLine();
-                }
+            
+            //Display shop menu
+            if (_Choice == "Y")
+            {
+                Menu.EnterStore(Player);
+                Menu.ShopMenu();
+            }
 
-                else
-                {
-                    Console.WriteLine("Invalid");
-                    _Choice = Console.ReadLine();
-                }
+            else if (_Choice == "N")
+            {
+                Console.WriteLine("You decided to go home.");
+                Console.ReadLine();
             }
         }
     }

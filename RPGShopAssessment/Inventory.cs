@@ -49,6 +49,7 @@ namespace RPGShopAssessment
             return itemSave;
         }
 
+        //prints items
         public void PrintItems()
         {
             for (int i = 0; i < _items.Length; i++)
@@ -57,6 +58,7 @@ namespace RPGShopAssessment
             }
         }
 
+        //returns gold and sets value
         public int Gold
         {
             get
@@ -76,6 +78,7 @@ namespace RPGShopAssessment
             }
         }
 
+        //returns item
         public Item[] Items
         {
             get
@@ -84,7 +87,7 @@ namespace RPGShopAssessment
             }
         }
 
-        //Save and Load system
+        //Save file
         public void Save(string path)
         {
             //Create a writer for the file at our path
@@ -121,6 +124,7 @@ namespace RPGShopAssessment
             writer.Close();
         }
 
+        //Load save file
         public void Load(string path)
         {
             if (File.Exists(path))
