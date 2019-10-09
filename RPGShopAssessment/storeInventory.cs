@@ -122,11 +122,14 @@ namespace RPGShopAssessment
                     if (number < 0 || number > _items.Length)
                     {
                         Console.WriteLine("Invalid Input");
-                        number = 1;
+                    }
+                    else if (number == 0)
+                    {
+                         
                     }
                     else
                     {
-                          ItemMenu(Convert.ToInt32(choice) - 1);
+                        ItemMenu(Convert.ToInt32(choice) - 1);
                     }
                 }
 
@@ -149,7 +152,6 @@ namespace RPGShopAssessment
                         if (number < 0 || number > _Player.Items.Length)
                         {
                             Console.WriteLine("Invalid Input");
-                            number = 1;
                         }
                         else
                         {
