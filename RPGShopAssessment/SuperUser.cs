@@ -48,8 +48,20 @@ namespace RPGShopAssessment
             newName = Console.ReadLine();
 
             Console.WriteLine("Enter a value");
-            newValue = Convert.ToInt32(Console.ReadLine());
 
+            int number = -1;
+            _choice = Console.ReadLine();
+            
+            if (Int32.TryParse(_choice, out number) && number >= 0)
+            {
+                newValue = number;
+            }
+            else
+            {
+                Console.WriteLine("Invalid Input");
+                return;
+            }
+            
             Console.WriteLine("Enter a description");
             newDescription = Console.ReadLine();
 
@@ -69,11 +81,24 @@ namespace RPGShopAssessment
 
             _choice = Console.ReadLine();
 
+            int number2 = -1;
+
             //add new weapon item
             if (_choice == "1")
             {
                 Console.WriteLine("Enter a damage value");
-                newDamage = Convert.ToInt32(Console.ReadLine());
+
+                _choice = Console.ReadLine();
+
+                if (Int32.TryParse(_choice, out number2) && number2 >= 0)
+                {
+                    newDamage = number2;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input");
+                    return;
+                }
 
                 Item newItem = new Weapon(newName, newDamage, newValue, newDescription);
                 _Shop.Add(newItem);
@@ -84,7 +109,18 @@ namespace RPGShopAssessment
             else if (_choice == "2")
             {
                 Console.WriteLine("Enter a heal value");
-                newHeal = Convert.ToInt32(Console.ReadLine());
+
+                _choice = Console.ReadLine();
+
+                if (Int32.TryParse(_choice, out number2) && number2 >= 0)
+                {
+                    newHeal = number2;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input");
+                    return;
+                }
 
                 Item newItem = new Potion(newName, newHeal, newValue, newDescription);
                 _Shop.Add(newItem);
