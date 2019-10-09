@@ -8,9 +8,10 @@ namespace RPGShopAssessment
 {
     class Weapon : Item
     {
+        //holds weapon damage
         private int _damage;
         
-
+        //Defines what a weapon consist of
         public Weapon(string newName, int newDamage, int newValue, string description)
         {
             _name = newName;
@@ -19,6 +20,7 @@ namespace RPGShopAssessment
             _description = description;
         }
 
+        //returns weapon damage
         public int GetDamage()
         {
             return _damage;

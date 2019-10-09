@@ -9,8 +9,10 @@ namespace RPGShopAssessment
 {
     class Inventory
     {
+        //Creates new Item array
         protected Item[] _items = new Item[0];
 
+        //Gold int for store and player
         public int _Gold;
 
         //Add Item to Store or Player

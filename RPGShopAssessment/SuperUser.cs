@@ -8,14 +8,28 @@ namespace RPGShopAssessment
 {
     class SuperUser
     {
+        //holds refrence for new name
         protected static string newName;
+
+        //holds refrence for new value
         protected static int newValue;
+
+        //holds refrence for new desccription
         protected static string newDescription;
+
+        //holds refrence for new damage value
         protected static int newDamage;
+
+        //holds refrence for new heal value
         protected static int newHeal;
+
+        //Players input
         protected static string _choice = "";
 
+        //Initalizes a new array
         Item item = new Item();
+
+        //used to refrence the storeInventory class
         storeInventory _Shop;
 
         //Super user speaks to the stores inventory
@@ -24,7 +38,7 @@ namespace RPGShopAssessment
             _Shop = Shop;
         }
 
-        //create new item
+        //create and add new item to shop
         public void AddItem()
         {
 

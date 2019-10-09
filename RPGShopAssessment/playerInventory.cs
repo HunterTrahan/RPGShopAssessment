@@ -8,6 +8,7 @@ namespace RPGShopAssessment
 {
     class playerInventory : Inventory
     {
+        //Holds the players gold
         public playerInventory()
         {
             _Gold = 250;

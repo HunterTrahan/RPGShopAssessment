@@ -9,29 +9,30 @@ namespace RPGShopAssessment
 {
     class storeInventory : Inventory
     {
+        //Initalizes a new array
         Item item = new Item();
-        playerInventory _Player;
-        SuperUser _Super;
-       
-        int call = 0;
-        int transaction = 0;
 
+        //used to refrence the playerInventory class
+        playerInventory _Player;
+
+        //used to refrence the SuperUser class
+        SuperUser _Super;
+
+        //used to exit shop menu
         bool exit = false;
 
 
-        //Weapon List
+        //Item List
         private Item dagger = new Weapon("Iron Dagger", 5, 10, "One of the more nortious of weapons often favored by rouges and thieves for being easily conceable.");
         private Item bow = new Weapon("Cheap Bow", 10, 10, "The weapon of choice for archers in training, cheap and affordable.");
         private Item sword = new Weapon("Iron Sword", 10, 15, "The Iron Sword is a equally effective in offense and defense and is a mian stay for adventures throughout the realm.");
         private Item mace = new Weapon("Steel Mace", 15, 20, "One of the more popular choice of weapons throughout the realm often favored by town guards and other peacekeepers.");
-
-        //Potion List
         private Item health = new Potion("Health Potion", 20, 30, "A adventures best friend, restores 20 health.");
         private Item mana = new Potion("Mana Potion", 25, 35, "A adventures second best friend, restores 20 mana.");
         private Item revive = new Potion("Resurrection Phial", 100, 50, "A rare and valuable potion that can be used to revive those fallen in combat.");
 
         //Holds the array of items
-        //super user & gold
+        //super user & store gold
         public storeInventory()
         {
             Item[] itemBag = { dagger, bow, sword, mace, health, mana, revive };
@@ -75,6 +76,7 @@ namespace RPGShopAssessment
             }
         }
 
+        //The shop
         public void ShopMenu()
         {
             string choice = "";
@@ -108,7 +110,6 @@ namespace RPGShopAssessment
                 {
                     Console.WriteLine("\nWhat are you buying?");
                     Console.WriteLine("0: Back");
-
                     for (int i = 0; i < _items.Length; i++)
                     {
                         Console.WriteLine(i + 1 + ": " + _items[i].GetName());
@@ -118,34 +119,43 @@ namespace RPGShopAssessment
                     choice = Console.ReadLine();
                     Int32.TryParse(choice, out number);
 
-                    if (number < 0)
+                    if (number < 0 || number > _items.Length)
                     {
                         Console.WriteLine("Invalid Input");
                         number = 1;
                     }
                     else
                     {
-
-                    }
-
-                    if (number <= _items.Length)
-                    {
-                        ItemMenu(Convert.ToInt32(choice) - 1);
+                          ItemMenu(Convert.ToInt32(choice) - 1);
                     }
                 }
 
                 //Display the list of items to sell 
                 else if (choice == "2")
                 {
-                    Console.WriteLine("\nWhat are you selling?");
-                    _Player.PrintItems();
-
-                    call = Convert.ToInt32(Console.ReadLine());
-
-                    if (_items.Length >= call)
+                    if(_Player.Items.Length < 1)
                     {
-                        Sell(call - 1);
-                        Console.WriteLine(Items[Items.Length - 1].GetName() + " Sold.");
+                        Console.WriteLine("Nothing to sell");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nWhat are you selling?");
+                        _Player.PrintItems();
+
+                        int number = 0;
+                        choice = Console.ReadLine();
+                        Int32.TryParse(choice, out number);
+
+                        if (number < 0 || number > _Player.Items.Length)
+                        {
+                            Console.WriteLine("Invalid Input");
+                            number = 1;
+                        }
+                        else
+                        {
+                            Sell(number - 1);
+                            Console.WriteLine(Items[Items.Length - 1].GetName() + " Sold.");
+                        }
                     }
 
                     Console.ReadLine();
@@ -159,19 +169,22 @@ namespace RPGShopAssessment
                     Console.ReadLine();
                 }
 
+                //save the game
                 else if (choice == "4")
                 {
                     Save("save.txt");
                     _Player.Save("PlayerSave.txt");
                     Console.WriteLine("Game Saved.");
                 }
-
+                
+                //load the game
                 else if (choice == "5")
                 {
                     Load("save.txt");
                     _Player.Load("PlayerSave.txt");
                 }
 
+                //enter super user
                 else if (choice == "password")
                 {
                     _Super.AddItem();
